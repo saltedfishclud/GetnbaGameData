@@ -1,0 +1,25 @@
+extends layout
+
+block content
+   style.
+       html{font-size: 16px}
+   h2 点击确认按钮开始爬取NBA火箭新闻数据  --- 该数据来自
+      a(href="http://sports.sina.com.cn/nba/") 新浪NBA
+
+   button#createNewsList 开始爬取数据
+   p.hint(style="display:none;") 正在获取数据中. . .
+
+
+   script(src="/javascripts/jquery.js")
+   script.
+        $("#createNewsList").click(function () {
+            $(".hint").show();
+            var newTime = new Date();
+            $.post("/createNews", function (data) {
+                if(data){
+                    var resTime = new Date() - newTime;
+                    $(".hint").html("数据爬取完成,总共用时" + resTime/1000 + "s");
+                }
+            });
+        });
+

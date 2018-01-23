@@ -1,0 +1,9 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+node_modules
+mongo_database
+.idea
+package-lock.json
